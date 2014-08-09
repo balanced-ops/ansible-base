@@ -1,0 +1,16 @@
+---
+sudoer: admin
+
+users: []
+
+limits:
+  - { domain: "*", type: soft, item: nofile, value: 30000 }
+  - { domain: "*", type: hard, item: nofile, value: 30000 }
+
+domain: vandelay.io
+
+pypi_scheme: https
+pypi_username: 
+pypi_password: 
+pypi_host: pypi.vandelay.io
+pypi_index: /balanced/prod/+simple/

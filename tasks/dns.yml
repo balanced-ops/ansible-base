@@ -1,0 +1,15 @@
+---
+
+- name: add self to hosts
+  lineinfile:
+    dest: /etc/hosts
+    line: "127.0.0.1 {{ ansible_hostname }}.{{ domain }} {{ ansible_hostname }}"
+    insertafter: '127.0.0.1 localhost'
+
+- name: list network interfaces
+  shell: "ls /etc/network/interfaces.d/*.cfg"
+  register: interfaces
+
+- name: add domain dns search to network interfaces
+  lineinfile: dest="{{ item }}" state=present line="dns-search \"{{ domain }}\""
+  with_items: interfaces.stdout_lines

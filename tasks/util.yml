@@ -1,0 +1,10 @@
+- name: install utils
+  apt: name="{{ item }}" state=present
+  with_items:
+    - tmux
+    - htop
+    - vim
+    - git
+
+- name: use vim by default
+  alternatives: name=editor path=/usr/bin/vim.basic link=/etc/alternatives/editor

@@ -1,0 +1,12 @@
+---
+- include: user.yml
+  tags: user
+
+- include: util.yml
+  tags: util
+
+- include: py.yml
+  tags: py
+  
+- include: dns.yml
+  tags: dns
