@@ -6,7 +6,9 @@ before_install:
   - sudo apt-get install -qq python-apt python-pycurl
 install:
   - pip install "ansible>=1.7.0,<1.8"
-script:
+before_script:
+  - "printf '[defaults]\nroles_path = ../\n' > ansible.cfg"
   - echo localhost > inventory
+script:
   - ansible-playbook --syntax-check -i inventory test.yml
   - ansible-playbook -i inventory test.yml --connection=local --sudo
