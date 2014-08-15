@@ -1,0 +1,9 @@
+---
+
+- name: adding apt ppas
+  apt_repository: repo="ppa:{{ item }}" state=present
+  with_items: "{{ apt_ppas }}"
+
+- name: adding apt repos
+  apt_repository: "deb {{ item.url }} {{ item.code_name }} {{ item.component }}" state=present
+  with_items: "{{ apt_repos }}"

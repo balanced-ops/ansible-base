@@ -10,3 +10,6 @@
   
 - include: dns.yml
   tags: dns
+  
+- include: swap.yml
+  tags: swap

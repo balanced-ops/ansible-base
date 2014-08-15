@@ -9,7 +9,6 @@
   - ipython
   - ipdb
   - "pip>=1.5,<2.0"
-  - cython
 
 - name: create pip dirs
   file: "path=~{{ item.name }}/.pip owner={{ item.name }} group={{ item.name }} mode=0700 state=directory"
