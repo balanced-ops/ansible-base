@@ -13,7 +13,7 @@ users: []
 #      - "ssh-rsa poop poop@peep"
 
 
-delete_users: []
+deleted_users: []
 # e.g.
 #- name: pooper
 
