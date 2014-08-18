@@ -5,6 +5,7 @@
     - htop
     - vim
     - git
+    - xfsprogs
 
 - name: use vim by default
   alternatives: name=editor path=/usr/bin/vim.basic link=/etc/alternatives/editor

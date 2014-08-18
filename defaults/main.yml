@@ -12,7 +12,6 @@ users: []
 #    revoked_keys:
 #      - "ssh-rsa poop poop@peep"
 
-
 deleted_users: []
 # e.g.
 #- name: pooper
