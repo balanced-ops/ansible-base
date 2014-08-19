@@ -6,16 +6,13 @@
     line: "127.0.0.1 {{ ansible_hostname }}.{{ domain }} {{ ansible_hostname }}"
     insertafter: '127.0.0.1 localhost'
 
-- name: check network interfaces
-  stat: path=/etc/network/interfaces.d/
-  register: check_interfaces
+- name: add domain search to resolv
+  lineinfile: >
+    dest=/etc/resolvconf/resolv.conf.d/head
+    line="search {{ domain }}"
+    state=present
+  register: resolv_domain_search
 
-- name: network interfaces
-  shell: "ls /etc/network/interfaces.d/*.cfg"
-  register: interfaces
-  when: check_interfaces.stat.exists
-
-- name: add domain dns search to network interfaces
-  lineinfile: dest="{{ item }}" state=present line="dns-search \"{{ domain }}\""
-  with_items: interfaces.stdout_lines
-  when: check_interfaces.stat.exists
+- name: update resolv
+  command: resolvconf -u
+  when: resolv_domain_search.changed
