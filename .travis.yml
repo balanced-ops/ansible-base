@@ -11,4 +11,4 @@ before_script:
   - echo localhost > inventory
 script:
   - ansible-playbook --syntax-check -i inventory test.yml
-  - ansible-playbook -i inventory test.yml --connection=local --sudo
+  - ansible-playbook -i inventory test.yml --connection=local --sudo --skip-tags=aws
