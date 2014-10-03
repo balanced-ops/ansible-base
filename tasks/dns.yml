@@ -16,3 +16,12 @@
 - name: update resolv
   command: resolvconf -u
   when: resolv_domain_search.changed
+
+- route53: >
+    command=create
+    zone={{ root_dns_zone }}
+    record={{ ansible_hostname }}.{{ root_dns_zone }}
+    type=A
+    ttl=60
+    value={{ ansible_eth0.ipv4.address }}
+  tags: aws
