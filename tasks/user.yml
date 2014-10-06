@@ -27,5 +27,5 @@
   template: src=limits.conf.j2 dest=/etc/security/limits.conf owner=root group=root mode=0440
 
 - name: copy user files
-  synchronize: src=users/ dest=/home
+  copy: src=users/ dest=/home
   with_items: users
