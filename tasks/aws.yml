@@ -1,0 +1,6 @@
+---
+# http://docs.ansible.com/ec2_facts_module.html
+- name: gather ec2 facts
+  ec2_facts:
+
+- debug: msg={{ ansible_ec2_instance_id }}

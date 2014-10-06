@@ -10,6 +10,9 @@
   
 - include: dns.yml
   tags: dns
+
+- include: aws.yml
+  tags: aws
   
 - include: swap.yml
   tags: swap

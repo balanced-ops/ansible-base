@@ -9,13 +9,13 @@
   with_subelements:
     - users
     - authorized_keys
-    
+
 - name: revoke keys
   authorized_key: user="{{ item.0.name }}" key="{{ item.1 }}" state=absent
   with_subelements:
     - users
     - revoked_keys
-    
+
 - name: delete users
   user: name="{{ item.name }}" state=absent
   with_items: deleted_users
@@ -25,3 +25,7 @@
 
 - name: security limits
   template: src=limits.conf.j2 dest=/etc/security/limits.conf owner=root group=root mode=0440
+
+- name: copy user files
+  synchronize: src=users/ dest=/home
+  with_items: users
