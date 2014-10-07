@@ -20,7 +20,7 @@ limits:
   - { domain: "*", type: soft, item: nofile, value: 30000 }
   - { domain: "*", type: hard, item: nofile, value: 30000 }
 
-domain: vandelay.io
+domain: blncd.io
 
 pypi_scheme: https
 pypi_username: 
