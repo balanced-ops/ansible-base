@@ -1,9 +1,26 @@
 ---
+# TODO: put this in some variable list.
+- name: check apt last update
+  stat: path=/var/cache/apt
+  register: apt_cache_stat
 
-- name: adding apt ppas
-  apt_repository: repo="ppa:{{ item }}" state=present
-  with_items: "{{ apt_ppas }}"
+- name: update apt if needed
+  apt: update_cache=yes
+  when: ansible_date_time.epoch|float - apt_cache_stat.stat.mtime > 60*60*12
 
-- name: adding apt repos
-  apt_repository: "deb {{ item.url }} {{ item.code_name }} {{ item.component }}" state=present
-  with_items: "{{ apt_repos }}"
+- name: Install the balanced package GPG key
+  apt_key: id=277E7787 keyserver=hkp://pgp.mit.edu
+
+- name: 'Add s3 apt repo with IAM creds if on AWS'
+  apt_repository: >
+    repo='deb s3://s3.amazonaws.com/apt.vandelay.io precise main'
+    state=present
+  when: ansible_ec2_instance_id is defined
+
+- name: 'Add s3 apt repo with embedded s3 credentials'
+  apt_repository: >-
+    repo='deb s3://{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}:
+                   {{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}@
+                   s3.amazonaws.com/apt.vandelay.io precise main'
+    state=present
+  when: ansible_ec2_instance_id is not defined
