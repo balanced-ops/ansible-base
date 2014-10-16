@@ -32,8 +32,7 @@ apt_ppas: []
 apt_repos: []
 
 swap_file: /swap
-swap_block_size: 1M
-swap_block_count: 1024
+swap_size: 1GB
 
 # dns
 root_dns_zone: blncd.io

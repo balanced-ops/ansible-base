@@ -7,8 +7,9 @@
 
 - name: write swapfile
   when: swapfile|failed
+  sudo: yes
   command: >
-    fallocate -l {{ swap_block_count }} {{ swap_file }}
+    fallocate -l {{ swap_size }} {{ swap_file }}
     creates={{ swap_file }}
   register: write_swapfile
 
