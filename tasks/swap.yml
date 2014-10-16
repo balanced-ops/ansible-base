@@ -14,18 +14,18 @@
 
 - name: set swapfile permissions
   when: swapfile|failed and write_swapfile.changed
-  file: path={{ swapfile_location }}
+  file: path={{ swap_file }}
         owner=root
         group=root
         mode=0600
 
 - name: prepare swapfile
   when: swapfile|failed and write_swapfile.changed
-  command: mkswap {{ swapfile_location }}
+  command: mkswap {{ swap_file }}
 
 - name: enable swap
   when: swapfile|failed
-  command: swapon {{ swapfile_location }}
+  command: swapon {{ swap_file }}
 
 - name: add swapfile mount point
   when: swapfile|failed
