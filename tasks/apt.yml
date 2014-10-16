@@ -13,14 +13,13 @@
 
 - name: 'Add s3 apt repo with IAM creds if on AWS'
   apt_repository: >
-    repo='deb s3://s3.amazonaws.com/apt.vandelay.io precise main'
+    repo='deb [arch=amd64,all] s3://s3.amazonaws.com/apt.vandelay.io precise main'
     state=present
   when: ansible_ec2_instance_id is defined
 
 - name: 'Add s3 apt repo with embedded s3 credentials'
   apt_repository: >-
-    repo='deb s3://{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}:
-                   {{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}@
-                   s3.amazonaws.com/apt.vandelay.io precise main'
+    repo='deb [arch=amd64,all] s3://{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}:{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}@s3.amazonaws.com/apt.vandelay.io precise main'
+    update_cache=yes
     state=present
   when: ansible_ec2_instance_id is not defined
