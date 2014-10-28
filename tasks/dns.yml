@@ -26,5 +26,6 @@
     type=A
     ttl=60
     value={{ ansible_eth0.ipv4.address }}
+    overwrite=true
   tags: aws
   when: ansible_ec2_instance_id is defined
