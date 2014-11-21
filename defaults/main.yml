@@ -7,7 +7,7 @@ users: []
 #    groups: [admin]
 #    shell: /bin/bash
 #    authorized_keys:
-#      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQClYhtXQPxx7FBOer6b9RDuXu3lKbUVs5HMJKXNbXKjQKkMeq7xHGRN0/jX0wu7ZRX6NmAjykqd4xUq6b4SXO8voL4jltbGkbqUD59WNipjlZ5ZF6TSda1cDREcqGdGMGuK6/IQujwOE45xX8WFzvSE5Xx1RI9LeGuWT9a1BC8ivhwtQNBA9mNzVDcWql8tq9LDh/xRsrqls/ul+XT5Ti0EviTdycCi3DSo2aPKYnwYm8vE5gP/lRlxSpDYP4y7WuE88PL4rCOY+3D1zBVPfRqKz+DVAyXXsoVJ1pLKBVKeiAhr3COWSkZIVr4/3IcHRzePyHDbMTUZfEZxKVh8Vnmb andrew@andrew-xg41" 
+#      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQClYhtXQPxx7FBOer6b9RDuXu3lKbUVs5HMJKXNbXKjQKkMeq7xHGRN0/jX0wu7ZRX6NmAjykqd4xUq6b4SXO8voL4jltbGkbqUD59WNipjlZ5ZF6TSda1cDREcqGdGMGuK6/IQujwOE45xX8WFzvSE5Xx1RI9LeGuWT9a1BC8ivhwtQNBA9mNzVDcWql8tq9LDh/xRsrqls/ul+XT5Ti0EviTdycCi3DSo2aPKYnwYm8vE5gP/lRlxSpDYP4y7WuE88PL4rCOY+3D1zBVPfRqKz+DVAyXXsoVJ1pLKBVKeiAhr3COWSkZIVr4/3IcHRzePyHDbMTUZfEZxKVh8Vnmb andrew@andrew-xg41"
 #      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXg6ZXth790ljL7nnRsLvdpXz1RnSCTmABrIjQoxnEFo96PkbFcAScXn12cHq6jqslNG9yLr4QXC3zbQcyuDds110CxJHTw6g0e3tjynj3FT1cfBzohrosX0SNvrVTz2g2G1V35cGhzgUCvGpYyrqCwpjA6auGbSGPcmvZXRbeqY8hjyPDKcy6RfynTZtNWNG5nqhe91qBP2oj1FGnvZIpt+pfmyZZttxC2qzuPOenP7Ahw+RLPhEuBz79dm3CaQv4iSRwFxyfpClx4CdO1bXXGPjlmPo+RV9LqVDes92bQYZ0Pv0ZJGXCjL4vXBK1QA1vzMJs2MqfjqBnrcaVBpN7 andrew@andrew-gazelle"
 #    revoked_keys:
 #      - "ssh-rsa poop poop@peep"
@@ -23,8 +23,8 @@ limits:
 domain: blncd.io
 
 pypi_scheme: https
-pypi_username: 
-pypi_password: 
+pypi_username:
+pypi_password:
 pypi_host: pypi.vandelay.io
 pypi_index: /balanced/prod/+simple/
 
@@ -32,7 +32,7 @@ apt_ppas: []
 apt_repos: []
 
 swap_file: /swap
-swap_block_size: 1M
-swap_block_count: 1024
+swap_size: 1GB
 
+# dns
 root_dns_zone: blncd.io

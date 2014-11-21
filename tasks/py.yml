@@ -1,14 +1,21 @@
 ---
 
 - name: install dev package
-  apt: name=python-dev state=present
-  
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - python-dev
+    - python-setuptools
+
+- name: install pip
+  easy_install: name=pip
+
 - name: install common packages
-  pip: name="{{ item }}" state=present
+  pip: name={{ item }} state=present
   with_items:
   - ipython
   - ipdb
   - "pip>=1.5,<2.0"
+  - 'boto==2.32.1'
 
 - name: create pip dirs
   file: "path=~{{ item.name }}/.pip owner={{ item.name }} group={{ item.name }} mode=0700 state=directory"
