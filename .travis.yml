@@ -17,6 +17,8 @@ script:
   - ansible-galaxy --help
   - which ansible-galaxy
   - which ansible
+  - git clone git@github.com:balanced-ops/ansible-apt-transport-s3.git /tmp/apt-transport-s3
+  - ls -ltra /tmp/apt-transport-s3
   - ansible-galaxy install -r ansible-requirements.yml --roles-path=roles/
   - ansible-playbook --syntax-check -i inventory test.yml
   - ansible-playbook -i inventory test.yml --connection=local --sudo --skip-tags=aws
