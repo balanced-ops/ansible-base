@@ -7,7 +7,7 @@ before_install:
 install:
   - pip install "ansible>=1.8.2,<1.9"
 before_script:
-  - echo '[defaults]\nroles_path = ../' > ansible.cfg
+  - echo '[defaults]\nroles_path = ../../' > ansible.cfg
   - echo localhost > inventory
 script:
   - ansible-playbook --syntax-check -i inventory test.yml
