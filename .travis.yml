@@ -10,7 +10,7 @@ install:
   - pip install 'ansible>=1.8.2,<1.9.0'
 before_script:
   - echo localhost > inventory
-  - 'ansible-galaxy install -r ansible-requirements.yml -p ./roles --force'
+  - ansible-galaxy install -r ansible-requirements.yml --force
 script:
   - ansible-playbook --syntax-check -i inventory test.yml
   - ansible-playbook -i inventory test.yml --connection=local --sudo --skip-tags=aws
