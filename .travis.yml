@@ -8,9 +8,15 @@ before_install:
   - sudo apt-get install -qq -y python-apt python-pycurl python-crypto git-core
 install:
   - pip install 'ansible>=1.8.2,<1.9.0'
-  - ansible-galaxy install -r ansible-requirements.yml --roles-path=roles/
 before_script:
   - echo localhost > inventory
+  - deactivate
+  - source ~/virtualenv/python2.7/bin/activate
 script:
+  - ansible --version
+  - ansible-galaxy --help
+  - which ansible-galaxy
+  - which ansible
+  - ansible-galaxy install -r ansible-requirements.yml --roles-path=roles/
   - ansible-playbook --syntax-check -i inventory test.yml
   - ansible-playbook -i inventory test.yml --connection=local --sudo --skip-tags=aws
