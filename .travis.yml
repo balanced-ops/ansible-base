@@ -5,7 +5,10 @@ before_install:
   - sudo apt-get install -qq -y python-software-properties
   - sudo apt-add-repository -y ppa:ansible/ansible
   - sudo apt-get update -qq
-  - sudo apt-get install -qq -y python-apt python-pycurl ansible=1.8.2-1
+  - sudo apt-get install -qq -y python-apt python-pycurl python-crypto
+  - sudo apt-cache showpkg ansible
+install:
+  - pip install 'ansible>=1.8.2,<1.9.0'
 before_script:
   - echo localhost > inventory
   - 'ansible-galaxy install -r ansible-requirements.yml -p $(pwd)/roles --force'
