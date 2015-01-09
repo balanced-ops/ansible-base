@@ -27,3 +27,5 @@ docs/_build
 .pydevproject
 .project
 
+# roles
+roles

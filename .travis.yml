@@ -2,13 +2,16 @@
 language: python
 python: 2.7
 before_install:
+  - sudo apt-get install -qq -y python-software-properties
+  - sudo apt-add-repository -y ppa:ansible/ansible
   - sudo apt-get update -qq
-  - sudo apt-get install -qq python-apt python-pycurl
+  - sudo apt-get install -qq -y python-apt python-pycurl python-crypto git-core
 install:
-  - pip install "ansible>=1.7.0,<1.8"
+  - pip install 'ansible>=1.8.2,<1.9.0'
 before_script:
-  - "printf '[defaults]\nroles_path = ../\n' > ansible.cfg"
   - echo localhost > inventory
+  - echo -e "Host github.com\n User git\n StrictHostKeyChecking no\n PasswordAuthentication no\n CheckHostIP no\n BatchMode yes\n" >> ~/.ssh/config
 script:
+  - ansible-galaxy install -r ansible-requirements.yml --roles-path=roles/
   - ansible-playbook --syntax-check -i inventory test.yml
   - ansible-playbook -i inventory test.yml --connection=local --sudo --skip-tags=aws

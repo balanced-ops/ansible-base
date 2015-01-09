@@ -4,9 +4,6 @@
 - include: aws.yml
   tags: aws
 
-- include: user.yml
-  tags: user
-
 - include: util.yml
   tags: util
 

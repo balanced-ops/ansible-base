@@ -1,0 +1,5 @@
+---
+
+  - src: https://github.com/balanced-ops/ansible-apt-transport-s3.git
+    version: 3eb85628179dd93902936a2b04e0c60ed8052ae7
+    name: apt-transport-s3
