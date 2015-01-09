@@ -1,0 +1,5 @@
+---
+
+  - src: git+git@github.com:balanced-ops/ansible-apt-transport-s3.git
+    version: master
+    name: apt-transport-s3
