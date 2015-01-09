@@ -10,15 +10,8 @@ install:
   - pip install 'ansible>=1.8.2,<1.9.0'
 before_script:
   - echo localhost > inventory
-  - deactivate
-  - source ~/virtualenv/python2.7/bin/activate
+  - echo -e "Host github.com\n User git\n StrictHostKeyChecking no\n PasswordAuthentication no\n CheckHostIP no\n BatchMode yes\n" >> ~/.ssh/config
 script:
-  - ansible --version
-  - ansible-galaxy --help
-  - which ansible-galaxy
-  - which ansible
-  - git clone git@github.com:balanced-ops/ansible-apt-transport-s3.git /tmp/apt-transport-s3
-  - ls -ltra /tmp/apt-transport-s3
   - ansible-galaxy install -r ansible-requirements.yml --roles-path=roles/
   - ansible-playbook --syntax-check -i inventory test.yml
   - ansible-playbook -i inventory test.yml --connection=local --sudo --skip-tags=aws
