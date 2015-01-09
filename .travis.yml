@@ -8,9 +8,9 @@ before_install:
   - sudo apt-get install -qq -y python-apt python-pycurl python-crypto git-core
 install:
   - pip install 'ansible>=1.8.2,<1.9.0'
+  - ansible-galaxy install -r ansible-requirements.yml -p roles/
 before_script:
   - echo localhost > inventory
-  - ansible-galaxy install -r ansible-requirements.yml --force
 script:
   - ansible-playbook --syntax-check -i inventory test.yml
   - ansible-playbook -i inventory test.yml --connection=local --sudo --skip-tags=aws
