@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get install -qq -y python-apt python-pycurl python-crypto git-core
 install:
   - pip install 'ansible>=1.8.2,<1.9.0'
-  - ansible-galaxy install -r ansible-requirements.yml -p roles/
+  - ansible-galaxy install -r ansible-requirements.yml --roles-path=roles/
 before_script:
   - echo localhost > inventory
 script:
