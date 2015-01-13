@@ -5,9 +5,10 @@
   with_items:
     - python-dev
     - python-setuptools
+    - python-pip
 
-- name: install pip
-  easy_install: name=pip
+- name: upgrade pip
+  pip: name=pip extra_args='-U'
 
 - name: install common packages
   pip: name={{ item }} state=present
