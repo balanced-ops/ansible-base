@@ -1,4 +1,18 @@
 ---
+- name: create pip dirs
+  file: "path=~{{ item.name }}/.pip owner={{ item.name }} group={{ item.name }} mode=0700 state=directory"
+  with_flattened:
+    - [{name: root}]
+
+- name: create pip confs
+  template: "src=pip.conf.j2 dest=~{{ item.name }}/.pip/pip.conf owner={{ item.name }} group={{ item.name }} mode=600"
+  with_flattened:
+    - [{name: root}]
+
+- name: create distutils confs
+  template: "src=pydistutils.cfg.j2 dest=~{{ item.name }}/.pydistutils.cfg owner={{ item.name }} group={{ item.name }} mode=600"
+  with_flattened:
+    - [{name: root}]
 
 - name: install dev package
   apt: pkg={{ item }} state=installed
@@ -17,18 +31,3 @@
   - ipdb
   - "pip>=1.5,<2.0"
   - 'boto==2.32.1'
-
-- name: create pip dirs
-  file: "path=~{{ item.name }}/.pip owner={{ item.name }} group={{ item.name }} mode=0700 state=directory"
-  with_flattened:
-    - [{name: root}]
-
-- name: create pip confs
-  template: "src=pip.conf.j2 dest=~{{ item.name }}/.pip/pip.conf owner={{ item.name }} group={{ item.name }} mode=600"
-  with_flattened:
-    - [{name: root}]
-
-- name: create distutils confs
-  template: "src=pydistutils.cfg.j2 dest=~{{ item.name }}/.pydistutils.cfg owner={{ item.name }} group={{ item.name }} mode=600"
-  with_flattened:
-    - [{name: root}]
